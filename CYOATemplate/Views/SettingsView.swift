@@ -39,28 +39,41 @@ struct SettingsView: View {
                     .padding()
                     
                     
-                // user can select a font type
+                    // user can select a font type
                     Text("Select Font")
                         .bold()
                         .underline()
                     
                         .padding()
                     
-                    Text("Font 1")
-                        .font(.custom("Superclarendon-Light", size: 30))
+                    Button("Font 1"){
+                    }
+                    .font(.custom("Superclarendon-Light", size: 30))
+                    .foregroundColor(.primary)
                     
-                    Text("Font 2")
-                        .font(.custom("Chalkduster", size: 30))
                     
-                    Text("Font 3")
+                    Button("Font 2"){
+                        
+                    }
+                    .font(.custom("Chalkduster", size: 30))
+                    .foregroundColor(.primary)
+                    
+                    
+                    Button("Font 3"){
+                        
+                    }
                         .font(.custom("TimesNewRomanPSMT", size: 30))
-                  
-                    Text("Font 4")
+                        .foregroundColor(.primary)
+                    
+                    Button("Font 4"){
+                        
+                    }
                         .font(.custom("SnellRoundhand-Bold", size: 30))
+                        .foregroundColor(.primary)
                     
                     Spacer()
                     
-                   
+                    
                 }
             }
             
@@ -77,14 +90,14 @@ struct SettingsView: View {
                         Text("Done")
                             .bold()
                     }
-
+                    
                 }
             }
-
+            
         }
         // Dark / light mode toggle
         .preferredColorScheme(book.reader.prefersDarkMode ? .dark : .light)
-
+        
     }
 }
 
