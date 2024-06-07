@@ -84,6 +84,7 @@ struct BookView: View {
                 SettingsView(showing: $showingSettingsView)
                     // Make the book state accessible to SettingsView
                     .environment(book)
+                    .presentationDetents([.fraction(0.6)])
             }
             // Respond when app is backgrounded, foregrounded, or made inactive
             .onChange(of: scenePhase) {

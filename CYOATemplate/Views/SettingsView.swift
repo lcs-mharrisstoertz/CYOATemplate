@@ -26,18 +26,44 @@ struct SettingsView: View {
         
         // The user interface
         return NavigationStack {
-            
-            VStack {
-                Toggle(isOn: $book.reader.prefersDarkMode) {
-                    Label {
-                        Text("Dark Mode")
-                    } icon: {
-                        Image(systemName: "moonphase.first.quarter")
+            ScrollView{
+                VStack {
+                    Toggle(isOn: $book.reader.prefersDarkMode) {
+                        Label {
+                            Text("Dark Mode")
+                        } icon: {
+                            Image(systemName: "moonphase.first.quarter")
+                        }
                     }
+                    
+                    .padding()
+                    
+                    
+                // user can select a font type
+                    Text("Select Font")
+                        .bold()
+                        .underline()
+                    
+                        .padding()
+                    
+                    Text("Font 1")
+                        .font(.custom("Superclarendon-Light", size: 30))
+                    
+                    Text("Font 2")
+                        .font(.custom("Chalkduster", size: 30))
+                    
+                    Text("Font 3")
+                        .font(.custom("TimesNewRomanPSMT", size: 30))
+                  
+                    Text("Font 4")
+                        .font(.custom("SnellRoundhand-Bold", size: 30))
+                    
+                    Spacer()
+                    
+                   
                 }
-                
-                Spacer()
             }
+            
             .padding()
             .navigationTitle("Statistics")
             // Toolbar to show buttons for various actions
