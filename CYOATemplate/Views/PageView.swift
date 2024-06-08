@@ -46,7 +46,7 @@ struct PageView: View {
                         )
                     )
                         //.font(.title2)
-                    .font(.custom(book.reader.currentFont ?? "System", fixedSize: 25))
+                    .font(.custom(book.reader.currentFont ?? "System", fixedSize: 20))
                     
                     
                     if let image = page.image {

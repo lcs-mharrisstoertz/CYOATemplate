@@ -37,7 +37,7 @@ struct BookView: View {
                     
                     HStack {
                         Text("\(book.currentPageId!)")
-                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: 25))
+                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: 20))
                         Spacer()
                     }
                     .padding()
