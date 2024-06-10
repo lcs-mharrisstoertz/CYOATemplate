@@ -26,7 +26,7 @@ struct CoverView: View {
                 
                 // Show the cover
                 Text("Journey Under the Sea")
-                    .font(.custom(book.reader.currentFont ?? "System", fixedSize: 40))
+                    .font(.title2)
                 
                 Button {
                     // Animate page changes (fade)
