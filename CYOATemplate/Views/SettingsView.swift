@@ -49,7 +49,6 @@ struct SettingsView: View {
                                 .bold()
                                 .underline()
                             
-                                .padding()
                             
                             Button("Font 1"){
                                 book.reader.currentFont = "Superclarendon-Light"
