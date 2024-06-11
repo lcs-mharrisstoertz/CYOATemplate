@@ -11,6 +11,8 @@ struct SettingsView: View {
     
     // MARK: Stored properties
     
+    @State private var currentFont: String = "System"
+    
     // Whether this view is showing in the sheet right now
     @Binding var showing: Bool
     
@@ -26,18 +28,62 @@ struct SettingsView: View {
         
         // The user interface
         return NavigationStack {
-            
-            VStack {
-                Toggle(isOn: $book.reader.prefersDarkMode) {
-                    Label {
-                        Text("Dark Mode")
-                    } icon: {
-                        Image(systemName: "moonphase.first.quarter")
+            ScrollView{
+                VStack {
+                    Toggle(isOn: $book.reader.prefersDarkMode) {
+                        Label {
+                            Text("Dark Mode")
+                        } icon: {
+                            Image(systemName: "moonphase.first.quarter")
+                        }
                     }
+                    
+                    .padding()
+                    
+                    
+                    // user can select a font type
+                    Text("Select Font")
+                        .bold()
+                        .underline()
+                    
+                        .padding()
+                    
+                    Button("Font 1"){
+                        book.reader.currentFont = "Superclarendon-Light"
+                        currentFont = "Superclarendon-Light"
+                    }
+                    .font(.custom("Superclarendon-Light", size: 30))
+                    .foregroundColor(.primary)
+                    
+                    
+                    Button("Font 2"){
+                        book.reader.currentFont = "Chalkduster"
+                        currentFont = "Chalkduster"
+                    }
+                    .font(.custom("Chalkduster", size: 30))
+                    .foregroundColor(.primary)
+                    
+                    
+                    Button("Font 3"){
+                        book.reader.currentFont = "TimesNewRomanPSMT"
+                        currentFont = "TimesNewRomanPSMT"
+                    }
+                    .font(.custom("TimesNewRomanPSMT", size: 30))
+                    .foregroundColor(.primary)
+                    
+                    Button("Font 4"){
+                        book.reader.currentFont = "SnellRoundhand-Bold"
+                        currentFont = "SnellRoundhand-Bold"
+                    }
+                    .font(.custom("SnellRoundhand-Bold", size: 30))
+                    .foregroundColor(.primary)
+                    
+                    Spacer()
+                    
+                    
                 }
-                
-                Spacer()
             }
+            
             .padding()
             .navigationTitle("Statistics")
             // Toolbar to show buttons for various actions
@@ -51,14 +97,14 @@ struct SettingsView: View {
                         Text("Done")
                             .bold()
                     }
-
+                    
                 }
             }
-
+            
         }
         // Dark / light mode toggle
         .preferredColorScheme(book.reader.prefersDarkMode ? .dark : .light)
-
+        
     }
 }
 

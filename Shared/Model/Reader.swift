@@ -12,6 +12,7 @@ struct Reader: Identifiable, Codable {
     var id: Int?
     var name: String?
     var prefersDarkMode: Bool
+    var currentFont: String?
     var lastPageReadId: Int?
 
     // When decoding and encoding from JSON, translate snake_case
@@ -19,6 +20,7 @@ struct Reader: Identifiable, Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case currentFont = "current_font"
         case prefersDarkMode = "prefers_dark_mode"
         case lastPageReadId = "last_page_read_id"
     }
