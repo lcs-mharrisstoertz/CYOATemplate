@@ -24,6 +24,9 @@ struct BookView: View {
     //Auto Font
     @State private var currentFont: String = "System"
     
+    //Auto Size
+    @State private var currentSize: Int = 20
+    
     // Track when app is foregrounded, backgrounded, or made inactive
     @Environment(\.scenePhase) var scenePhase
 
@@ -37,7 +40,7 @@ struct BookView: View {
                     
                     HStack {
                         Text("\(book.currentPageId!)")
-                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: 20))
+                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
                         Spacer()
                     }
                     .padding()
