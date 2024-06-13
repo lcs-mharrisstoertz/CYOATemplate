@@ -27,18 +27,9 @@ struct CoverView: View {
     
     var body: some View {
         
-        if book.isNotReadyToRead {
-            
-            ProgressView()
-            
-        } else {
             VStack {
                 
-                if book.isNotReadyToRead {
-                    
-                    ProgressView()
-                    
-                } else {
+            
                     ZStack{
                         
                         covervideo()
@@ -63,7 +54,7 @@ struct CoverView: View {
                             .buttonStyle(.borderedProminent)
                         }
                         
-                    }
+                    
                     
                     
                 }
@@ -73,7 +64,7 @@ struct CoverView: View {
             
         }
     }
-}
+
 
 #Preview {
     CoverView()

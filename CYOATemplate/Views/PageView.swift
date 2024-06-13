@@ -33,7 +33,7 @@ struct PageView: View {
                     
                     // DEBUG
                     let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
-//                    let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
+                    let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
 
                     Text(
                         try! AttributedString(
@@ -45,20 +45,15 @@ struct PageView: View {
                     )
                         .font(.title2)
                     
-//                    if let image = page.image {
-//                        
-//                        Image(image)
-//                            .resizable()
-//                            .scaledToFit()
-//                            .border(.black, width: 1)
-//                            .padding(.vertical, 10)
-//
-//                    }
-                    Text("The End")
-                        .bold()
-                        .onTapGesture {
-                            book.showCoverPage()
-                        }
+                    if let image = page.image {
+                        
+                        Image(image)
+                            .resizable()
+                            .scaledToFit()
+                            .border(.black, width: 1)
+                            .padding(.vertical, 10)
+
+                    }
 
                     Divider()
                     
