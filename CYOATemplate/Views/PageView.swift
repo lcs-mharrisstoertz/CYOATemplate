@@ -54,8 +54,11 @@ struct PageView: View {
                             .padding(.vertical, 10)
 
                     }
-                    NavigationLink("Go to Second View", destination: Test())
-                                     .padding()
+                    Text("The End")
+                        .bold()
+                        .onTapGesture {
+                            book.showCoverPage()
+                        }
 
                     Divider()
                     
