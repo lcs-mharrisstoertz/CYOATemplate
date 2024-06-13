@@ -24,7 +24,7 @@ struct CoverView: View {
     @Environment(BookStore.self) var book
     
     // MARK: Computed properties
-    
+    @State private var scale = 1.0
     var body: some View {
         
             VStack {
@@ -41,17 +41,29 @@ struct CoverView: View {
                                 .font(.largeTitle)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color(red: 0.68, green: 0.85, blue: 0.90)) // Light pastel blue color
-                                        .padding()
+                                   
                             
-                            Button {
-                                // Animate page changes (fade)
-                                
+                            
+                            Button(action: {
                                 book.beginReading()
+                                scale += 1
+                                   }) {
+                                       Text("Begin Story")
+                                           .font(.title) 
+                                           .foregroundColor(.white)
+                                           .padding()
+                                           .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.69, green: 0.87, blue: 1.0), Color(red: 0.46, green: 0.76, blue: 1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                                                         .cornerRadius(25)
+                                           .scaleEffect(scale)
+                                                  .animation(.linear(duration: 1), value: scale)
+                                                 
+                                           
+                                   }
                                 
-                            } label: {
-                                Text("Begin reading")
-                            }
-                            .buttonStyle(.borderedProminent)
+                            
+                                  
+                               
+                          
                         }
                         
                     
@@ -59,6 +71,7 @@ struct CoverView: View {
                     
                 }
                 
+
                 
             }
             
