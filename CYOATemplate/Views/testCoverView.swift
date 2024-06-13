@@ -67,10 +67,10 @@ struct Test: View {
     var body: some View {
         VStack {
             
-            Spacer()
-                       .frame(width: 50)
+            
                    covervideo()
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
