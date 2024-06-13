@@ -16,6 +16,12 @@ struct CoverView: View {
         return AVPlayer(url: fileUrl)
     }
     
+    static let color0 = Color(red: 8/255, green: 28/255, blue: 83/255);
+  
+    static let color1 = Color(red: 67/255, green: 78/255, blue: 215/255);
+  
+
+let gradient = Gradient(colors: [color0, color1]);
     
     
     // MARK: Stored properties
@@ -38,27 +44,32 @@ struct CoverView: View {
                         VStack{
                             // Show the cover
                             Text("Journey Under the Sea")
-                                .font(.largeTitle)
+                                .font(.system(size: 50))
                                         .fontWeight(.bold)
-                                        .foregroundColor(Color(red: 0.68, green: 0.85, blue: 0.90)) // Light pastel blue color
-                                   
+                                        .foregroundColor(Color(red: 0.68, green: 0.85, blue: 10)) // Light pastel blue color
+                                        
                             
                             
                             Button(action: {
                                 book.beginReading()
-                                scale += 1
+                                scale += 0.5
                                    }) {
                                        Text("Begin Story")
                                            .font(.title) 
                                            .foregroundColor(.white)
                                            .padding()
-                                           .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.69, green: 0.87, blue: 1.0), Color(red: 0.46, green: 0.76, blue: 1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                                           .background((RadialGradient(
+                                            gradient: gradient,
+                                            center: .center,
+                                            startRadius: 1,
+                                            endRadius: 100)))
                                                          .cornerRadius(25)
                                            .scaleEffect(scale)
                                                   .animation(.linear(duration: 1), value: scale)
-                                                 
+                                                  .padding(.top, 170)
                                            
                                    }
+                                                           
                                 
                             
                                   

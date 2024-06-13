@@ -153,7 +153,7 @@ class BookStore: Observable {
     
     // Start reading from the first page
     func beginReading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.currentPageId = 1
         }
     }
