@@ -54,6 +54,8 @@ struct PageView: View {
                             .padding(.vertical, 10)
 
                     }
+                    NavigationLink("Go to Second View", destination: Test())
+                                     .padding()
 
                     Divider()
                     

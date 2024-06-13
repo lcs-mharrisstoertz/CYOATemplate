@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct CoverView: View {
+    
+  
+
     
     // MARK: Stored properties
     
@@ -38,6 +42,7 @@ struct CoverView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
+            
             
         }
         .padding()

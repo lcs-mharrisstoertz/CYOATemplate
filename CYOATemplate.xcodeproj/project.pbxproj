@@ -47,6 +47,8 @@
 		81C198BF2A251B4D0047A4B3 /* Ending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C198BE2A251B4D0047A4B3 /* Ending.swift */; };
 		81C784AB2A28AD0B001BC867 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C784AA2A28AD0B001BC867 /* PageView.swift */; };
 		81C784AF2A28B4E7001BC867 /* EdgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C784AE2A28B4E7001BC867 /* EdgesView.swift */; };
+		C215979B2C1A929A00AB045A /* sample_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C215979A2C1A929900AB045A /* sample_video.mp4 */; };
+		C215979D2C1A991300AB045A /* testCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C215979C2C1A991300AB045A /* testCoverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +90,8 @@
 		81C198BE2A251B4D0047A4B3 /* Ending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ending.swift; sourceTree = "<group>"; };
 		81C784AA2A28AD0B001BC867 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		81C784AE2A28B4E7001BC867 /* EdgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesView.swift; sourceTree = "<group>"; };
+		C215979A2C1A929900AB045A /* sample_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_video.mp4; sourceTree = "<group>"; };
+		C215979C2C1A991300AB045A /* testCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCoverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 		81C1989C2A251ABB0047A4B3 = {
 			isa = PBXGroup;
 			children = (
+				C215979A2C1A929900AB045A /* sample_video.mp4 */,
 				812F51542C0DF46500C1A270 /* Shared */,
 				81C198A72A251ABB0047A4B3 /* CYOATemplate */,
 				8123CD172A34CF7B00F9DF1C /* GraphGenerator */,
@@ -243,6 +248,7 @@
 				81C784AA2A28AD0B001BC867 /* PageView.swift */,
 				812F51382C0D01A300C1A270 /* StatsView.swift */,
 				812F513A2C0D06C900C1A270 /* SettingsView.swift */,
+				C215979C2C1A991300AB045A /* testCoverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 			files = (
 				81C198B02A251ABC0047A4B3 /* Preview Assets.xcassets in Resources */,
 				81C198AD2A251ABC0047A4B3 /* Assets.xcassets in Resources */,
+				C215979B2C1A929A00AB045A /* sample_video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C215979D2C1A991300AB045A /* testCoverView.swift in Sources */,
 				81C198BB2A251B1B0047A4B3 /* Page.swift in Sources */,
 				81C198B92A251AE00047A4B3 /* BookView.swift in Sources */,
 				81C198BD2A251B2B0047A4B3 /* Edge.swift in Sources */,
@@ -561,7 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CYOATemplate/Preview Content\"";
-				DEVELOPMENT_TEAM = 69F73CZKCZ;
+				DEVELOPMENT_TEAM = 4UG443984D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -593,7 +601,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CYOATemplate/Preview Content\"";
-				DEVELOPMENT_TEAM = 69F73CZKCZ;
+				DEVELOPMENT_TEAM = 4UG443984D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
