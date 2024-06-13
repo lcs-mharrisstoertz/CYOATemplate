@@ -91,7 +91,7 @@ struct SettingsView: View {
                             Text("Select Font Size")
                                 .bold()
                                 .underline()
-                                
+                            
                             Spacer()
                             
                             Button("Aa"){
@@ -100,7 +100,7 @@ struct SettingsView: View {
                             }
                             .font(.custom("System", size: 15))
                             .foregroundColor(.primary)
-
+                            
                             
                             Button("Aa"){
                                 book.reader.currentSize = 20
@@ -130,55 +130,56 @@ struct SettingsView: View {
                         
                         Spacer()
                     }
-                 
+                    
                     Text("Select Font Colour")
                         .bold()
                         .underline()
                     
                     HStack{
-                        Button(""){
-                            print("Button pressed!")
+                        Button(" "){
+                            book.reader.currentColour = "red"
                         }
                         .padding()
                         .background(Color(.red))
                         .clipShape(Circle())
                         
-                        Button(""){
-                            print("Button pressed!")
+                        Button(" "){
+                            book.reader.currentColour = "orange"
                         }
                         .padding()
                         .background(Color(.orange))
                         .clipShape(Circle())
                         
                         
-                        Button(""){
-                            print("Button pressed!")
+                        Button(" "){
+                            book.reader.currentColour = "yellow"
                         }
                         .padding()
                         .background(Color(.yellow))
                         .clipShape(Circle())
                         
                         
-                        Button(""){
-                            print("Button pressed!")
+                        Button(" "){
+                            book.reader.currentColour = "green"
                         }
                         .padding()
                         .background(Color(.green))
                         .clipShape(Circle())
                         
-                        Button(""){
-                            print("Button pressed!")
+                        Button(" "){
+                            book.reader.currentColour = "blue"
                         }
                         .padding()
                         .background(Color(.blue))
                         .clipShape(Circle())
                         
-                        Button(""){
-                            print("Button pressed!")
-                        }
+                        Button(" "){
+                            book.reader.currentColour = "purple"                        }
                         .padding()
                         .background(Color(.purple))
                         .clipShape(Circle())
+                        
+                        
                     }
                     
                     Spacer()

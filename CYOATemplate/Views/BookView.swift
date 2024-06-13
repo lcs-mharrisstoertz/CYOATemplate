@@ -24,6 +24,9 @@ struct BookView: View {
     //Auto Font
     @State private var currentFont: String = "System"
     
+    //Auto Font
+    @State private var currentColour: String = "primary"
+    
     //Auto Size
     @State private var currentSize: Int = 20
     
@@ -41,6 +44,7 @@ struct BookView: View {
                     HStack {
                         Text("\(book.currentPageId!)")
                             .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
+                            .foregroundColor(book.reader.color)
                         Spacer()
                     }
                     .padding()

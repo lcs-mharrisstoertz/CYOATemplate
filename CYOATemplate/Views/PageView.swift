@@ -13,6 +13,8 @@ struct PageView: View {
     
     @State private var currentFont: String = "System"
     
+    @State private var currentColour: String = "primary"
+    
     @State private var currentSize: Int = 20
 
     // Access the book state through the environment
@@ -49,6 +51,7 @@ struct PageView: View {
                     )
                         //.font(.title2)
                     .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
+                    .foregroundColor(book.reader.color)
                     
                     
                     if let image = page.image {

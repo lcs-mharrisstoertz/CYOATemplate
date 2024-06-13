@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Reader: Identifiable, Codable {
     
@@ -13,6 +14,7 @@ struct Reader: Identifiable, Codable {
     var name: String?
     var prefersDarkMode: Bool
     var currentFont: String?
+    var currentColour: String?
     var currentSize: Int?
     var lastPageReadId: Int?
 
@@ -22,9 +24,39 @@ struct Reader: Identifiable, Codable {
         case id
         case name
         case currentFont = "current_font"
+        case currentColour = "current_colour"
         case currentSize = "current_size"
         case prefersDarkMode = "prefers_dark_mode"
         case lastPageReadId = "last_page_read_id"
     }
     
-}
+    // convert currentColour string to Color
+     var color: Color {
+         return colorFromString(currentColour ?? "primary")
+     }
+    
+    // Function to convert colour strings to SwiftUI Color
+    func colorFromString(_ color: String) -> Color {
+        switch color.lowercased() {
+        case "primary":
+            return Color.primary
+        case "red":
+            return Color.red
+        case "orange":
+            return Color.orange
+        case "yellow":
+            return Color.yellow
+        case "green":
+            return Color.green
+        case "blue":
+            return Color.blue
+        case "purple":
+            return Color.purple
+        default:
+            return Color.primary // Fallback to primary color
+        }
+    }
+
+ }
+
+
