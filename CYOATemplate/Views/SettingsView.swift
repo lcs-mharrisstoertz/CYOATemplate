@@ -43,6 +43,9 @@ struct SettingsView: View {
                     .padding()
                     
                     HStack{
+                        
+                        Spacer()
+                        
                         VStack{
                             // user can select a font type
                             Text("Select Font")
@@ -54,7 +57,7 @@ struct SettingsView: View {
                                 book.reader.currentFont = "Superclarendon-Light"
                                 currentFont = "Superclarendon-Light"
                             }
-                            .font(.custom("Superclarendon-Light", size: 30))
+                            .font(.custom("Superclarendon-Light", size: 25))
                             .foregroundColor(.primary)
                             
                             
@@ -62,7 +65,7 @@ struct SettingsView: View {
                                 book.reader.currentFont = "Chalkduster"
                                 currentFont = "Chalkduster"
                             }
-                            .font(.custom("Chalkduster", size: 30))
+                            .font(.custom("Chalkduster", size: 25))
                             .foregroundColor(.primary)
                             
                             
@@ -70,24 +73,26 @@ struct SettingsView: View {
                                 book.reader.currentFont = "TimesNewRomanPSMT"
                                 currentFont = "TimesNewRomanPSMT"
                             }
-                            .font(.custom("TimesNewRomanPSMT", size: 30))
+                            .font(.custom("TimesNewRomanPSMT", size: 25))
                             .foregroundColor(.primary)
                             
                             Button("Font 4"){
                                 book.reader.currentFont = "SnellRoundhand-Bold"
                                 currentFont = "SnellRoundhand-Bold"
                             }
-                            .font(.custom("SnellRoundhand-Bold", size: 30))
+                            .font(.custom("SnellRoundhand-Bold", size: 25))
                             .foregroundColor(.primary)
                         }
+                        
+                        Spacer()
                         
                         VStack{
                             // user can select a font size
                             Text("Select Font Size")
                                 .bold()
                                 .underline()
-                                .padding()
-                            
+                                
+                            Spacer()
                             
                             Button("Aa"){
                                 book.reader.currentSize = 15
@@ -119,11 +124,63 @@ struct SettingsView: View {
                             .font(.custom("System", size: 35))
                             .foregroundColor(.primary)
                             
+                            Spacer()
+                            
                         }
                         
+                        Spacer()
                     }
                  
-                  
+                    Text("Select Font Colour")
+                        .bold()
+                        .underline()
+                    
+                    HStack{
+                        Button(""){
+                            print("Button pressed!")
+                        }
+                        .padding()
+                        .background(Color(.red))
+                        .clipShape(Circle())
+                        
+                        Button(""){
+                            print("Button pressed!")
+                        }
+                        .padding()
+                        .background(Color(.orange))
+                        .clipShape(Circle())
+                        
+                        
+                        Button(""){
+                            print("Button pressed!")
+                        }
+                        .padding()
+                        .background(Color(.yellow))
+                        .clipShape(Circle())
+                        
+                        
+                        Button(""){
+                            print("Button pressed!")
+                        }
+                        .padding()
+                        .background(Color(.green))
+                        .clipShape(Circle())
+                        
+                        Button(""){
+                            print("Button pressed!")
+                        }
+                        .padding()
+                        .background(Color(.blue))
+                        .clipShape(Circle())
+                        
+                        Button(""){
+                            print("Button pressed!")
+                        }
+                        .padding()
+                        .background(Color(.purple))
+                        .clipShape(Circle())
+                    }
+                    
                     Spacer()
                     
                     
