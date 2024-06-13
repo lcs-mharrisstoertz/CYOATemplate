@@ -48,7 +48,7 @@
 		81C784AB2A28AD0B001BC867 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C784AA2A28AD0B001BC867 /* PageView.swift */; };
 		81C784AF2A28B4E7001BC867 /* EdgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C784AE2A28B4E7001BC867 /* EdgesView.swift */; };
 		C215979B2C1A929A00AB045A /* sample_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C215979A2C1A929900AB045A /* sample_video.mp4 */; };
-		C215979D2C1A991300AB045A /* testCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C215979C2C1A991300AB045A /* testCoverView.swift */; };
+		C215979D2C1A991300AB045A /* videoStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C215979C2C1A991300AB045A /* videoStructure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,7 +91,7 @@
 		81C784AA2A28AD0B001BC867 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		81C784AE2A28B4E7001BC867 /* EdgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesView.swift; sourceTree = "<group>"; };
 		C215979A2C1A929900AB045A /* sample_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_video.mp4; sourceTree = "<group>"; };
-		C215979C2C1A991300AB045A /* testCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCoverView.swift; sourceTree = "<group>"; };
+		C215979C2C1A991300AB045A /* videoStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoStructure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +248,7 @@
 				81C784AA2A28AD0B001BC867 /* PageView.swift */,
 				812F51382C0D01A300C1A270 /* StatsView.swift */,
 				812F513A2C0D06C900C1A270 /* SettingsView.swift */,
-				C215979C2C1A991300AB045A /* testCoverView.swift */,
+				C215979C2C1A991300AB045A /* videoStructure.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,7 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C215979D2C1A991300AB045A /* testCoverView.swift in Sources */,
+				C215979D2C1A991300AB045A /* videoStructure.swift in Sources */,
 				81C198BB2A251B1B0047A4B3 /* Page.swift in Sources */,
 				81C198B92A251AE00047A4B3 /* BookView.swift in Sources */,
 				81C198BD2A251B2B0047A4B3 /* Edge.swift in Sources */,

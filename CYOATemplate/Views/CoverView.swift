@@ -10,8 +10,13 @@ import AVFoundation
 
 struct CoverView: View {
     
-  
-
+    var player: AVPlayer {
+        //loads the video from the app
+        let fileUrl = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")!
+        return AVPlayer(url: fileUrl)
+    }
+    
+    
     
     // MARK: Stored properties
     
@@ -19,34 +24,54 @@ struct CoverView: View {
     @Environment(BookStore.self) var book
     
     // MARK: Computed properties
+    
     var body: some View {
-        VStack {
+        
+        if book.isNotReadyToRead {
             
-            if book.isNotReadyToRead {
+            ProgressView()
+            
+        } else {
+            VStack {
                 
-                ProgressView()
-                
-            } else {
-                
-                // Show the cover
-                Text("Journey Under the Sea")
-                    .font(.largeTitle)
-                
-                Button {
-                    // Animate page changes (fade)
-                    withAnimation {
-                        book.beginReading()
+                if book.isNotReadyToRead {
+                    
+                    ProgressView()
+                    
+                } else {
+                    ZStack{
+                        
+                        covervideo()
+                            .edgesIgnoringSafeArea(.all)
+                        
+                        VStack{
+                            // Show the cover
+                            Text("Journey Under the Sea")
+                                .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color(red: 0.68, green: 0.85, blue: 0.90)) // Light pastel blue color
+                                        .padding()
+                            
+                            Button {
+                                // Animate page changes (fade)
+                                
+                                book.beginReading()
+                                
+                            } label: {
+                                Text("Begin reading")
+                            }
+                            .buttonStyle(.borderedProminent)
+                        }
+                        
                     }
-                } label: {
-                    Text("Begin reading")
+                    
+                    
                 }
-                .buttonStyle(.borderedProminent)
+                
+                
             }
             
-            
         }
-        .padding()
-        
     }
 }
 
