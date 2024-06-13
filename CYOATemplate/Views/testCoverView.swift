@@ -51,29 +51,5 @@ class PlayerUIView: UIView {
            playerLayer.frame = bounds
    }
 }
-struct Test: View {
-    
-    var player: AVPlayer {
-        // Load the video file from the app bundle
-        let fileUrl = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")!
-        return AVPlayer(url: fileUrl)
-    }
-    
-    
-    // MARK: Stored properties
-    
-    // Access the book state through the environment
-    // MARK: Computed properties
-    var body: some View {
-        VStack {
-            
-            
-                   covervideo()
-        }
-        .edgesIgnoringSafeArea(.all)
-    }
-}
 
-#Preview {
-    Test()
-}
+

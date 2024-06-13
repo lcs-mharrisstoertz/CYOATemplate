@@ -54,6 +54,17 @@ struct BookView: View {
             // Toolbar to show buttons for various actions
             .toolbar {
                 
+                ToolbarItem(placement: .automatic) {
+                        Image(systemName: "arrow.left")
+                        .onTapGesture {
+                            book.showCoverPage()
+                        }
+                    }
+
+                
+
+                
+                
                 // Show the statistics view
                 ToolbarItem(placement: .automatic) {
                     Button {
