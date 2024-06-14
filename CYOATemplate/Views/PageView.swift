@@ -9,21 +9,13 @@ import SwiftUI
 import AVFoundation
 
 struct PageView: View {
-    
-    func textToSpeech() {
-        let utterance = AVSpeechUtterance(string: "Hello world")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-        utterance.rate = 0.1
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
-    }
-   
 
     // MARK: Stored properties
     
     @State private var currentFont: String = "System"
     
     @State private var currentSize: Int = 20
+    
 
     // Access the book state through the environment
     @Environment(BookStore.self) var book
@@ -36,7 +28,6 @@ struct PageView: View {
     // (which is fed to the initializer of PageViewModel)
     // then PageView will be re-loaded, updating the text
     let viewModel: PageViewModel
-    
     // MARK: Computed properties
     var body: some View {
         
@@ -49,7 +40,10 @@ struct PageView: View {
                     // DEBUG
                     let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
                     let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
-
+                    
+                    let pageText = page.narrative
+                    
+                   
                     Text(
                         try! AttributedString(
                             markdown: page.narrative,
@@ -73,6 +67,7 @@ struct PageView: View {
                     }
 
                     Divider()
+                    
                     
                     if page.isAnEndingOfTheStory {
 
