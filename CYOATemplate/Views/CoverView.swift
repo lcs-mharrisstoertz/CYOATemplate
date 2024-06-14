@@ -8,6 +8,7 @@
 import SwiftUI
 import AVFoundation
 
+@available(iOS 17.0, *)
 struct CoverView: View {
     
     var player: AVPlayer {
