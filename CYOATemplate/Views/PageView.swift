@@ -34,10 +34,10 @@ struct PageView: View {
     
     func textT(){
         let TilteSpeakingText1 = AVSpeechUtterance(string: Texty)
-        TilteSpeakingText1.rate = 0.003
+        TilteSpeakingText1.rate = 0.3
         TilteSpeakingText1.pitchMultiplier = 0.60
         TilteSpeakingText1.volume = 0.75
-        TilteSpeakingText1.postUtteranceDelay = 0.01
+        TilteSpeakingText1.postUtteranceDelay = 0.03
         Voice.speak(TilteSpeakingText1)//call here instead
 
     }
