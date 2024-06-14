@@ -56,8 +56,9 @@ struct BookView: View {
             // Toolbar to show buttons for various actions
             .toolbar {
                 
-                ToolbarItem(placement: .automatic) {
+                ToolbarItem(placement: .topBarLeading) {
                         Image(systemName: "arrow.left")
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                         .onTapGesture {
                             showConfirmation.toggle()                       }
                     }
@@ -97,7 +98,8 @@ struct BookView: View {
                     Text("Yes")
                 }
             }message: {
-                    Text("if you press yes all progress within the book will be lost")
+                    Text("if you press continue all progress within the book will be lost")
+                    .bold()
                 }
           
             // Show the statistics view
