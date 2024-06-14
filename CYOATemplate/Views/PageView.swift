@@ -13,10 +13,10 @@ struct PageView: View {
     // MARK: Stored properties
     
     @State private var currentFont: String = "System"
-    
+
     @State private var currentSize: Int = 20
     @State var Texty: String = ""
-    @State private var speechSynthesizer: AVSpeechSynthesizer?
+    @State var speechSynthesizer: AVSpeechSynthesizer?
 
 
     // Access the book state through the environment
@@ -34,9 +34,11 @@ struct PageView: View {
     
     func textT(){
         let utterance = AVSpeechUtterance(string: Texty)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
+           utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+           utterance.rate = 0.1
+
+           speechSynthesizer = AVSpeechSynthesizer()
+           speechSynthesizer?.speak(utterance)
 
     }
     var body: some View {
@@ -46,15 +48,28 @@ struct PageView: View {
                                           
                 // Has the page loaded yet?
                 if let page = viewModel.page {
-                    
                     // DEBUG
                     let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
                     let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
+                    HStack{
+                        Button(action: {
+                            // Call the TextT function when the button is pressed
+                            Texty = page.narrative
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                textT()
+                            }
+                            
+                        }) {
+                            Text("text to speech")
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        padd
+                    }
                     
-                    let Texty = page.narrative
-                    
-                    
-                   
                     Text(
                         try! AttributedString(
                             markdown: page.narrative,
@@ -66,16 +81,7 @@ struct PageView: View {
                         //.font(.title2)
                     .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
                     
-                    Button(action: {
-                                // Call the TextT function when the button is pressed
-                                textT()
-                            }) {
-                                Text("Press Me")
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
+                   
                         
                     
                     if let image = page.image {
