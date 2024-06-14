@@ -11,15 +11,23 @@ import SwiftUI
 struct BookView: View {
     
     // MARK: Stored properties
-    
-    // Tracks overall state as the reader reads the book
     @State private var book = BookStore()
+
+    // Tracks overall state as the reader reads the book
+    @State private var showConfirmation: Bool = false
     
+    @State private var settingsDetent = PresentationDetent.medium
     // Whether the statistics view is being shown right now
     @State private var showingStatsView = false
-
+    // makes the confirm view not show by default
     // Whether the settings view is being shown right now
     @State private var showingSettingsView = false
+    
+    //Auto Font
+    @State private var currentFont: String = "System"
+    
+    //Auto Size
+    @State private var currentSize: Int = 20
     
     // Track when app is foregrounded, backgrounded, or made inactive
     @Environment(\.scenePhase) var scenePhase
@@ -34,7 +42,7 @@ struct BookView: View {
                     
                     HStack {
                         Text("\(book.currentPageId!)")
-                            .font(.largeTitle)
+                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
                         Spacer()
                     }
                     .padding()
@@ -53,6 +61,17 @@ struct BookView: View {
             .environment(book)
             // Toolbar to show buttons for various actions
             .toolbar {
+                
+                ToolbarItem(placement: .topBarLeading) {
+                        Image(systemName: "arrow.left")
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .onTapGesture {
+                            showConfirmation.toggle()                       }
+                    }
+
+                
+
+                
                 
                 // Show the statistics view
                 ToolbarItem(placement: .automatic) {
@@ -73,8 +92,22 @@ struct BookView: View {
                     }
 
                 }
+               
 
             }
+            
+            .confirmationDialog("ARE YOU SURE", isPresented: $showConfirmation, titleVisibility: .visible) {
+                Button(role: .destructive) {
+                    book.showCoverPage()
+                    
+                } label: {
+                    Text("Yes")
+                }
+            }message: {
+                    Text("if you press continue all progress within the book will be lost")
+                    .bold()
+                }
+          
             // Show the statistics view
             .sheet(isPresented: $showingStatsView) {
                 StatsView(showing: $showingStatsView)
@@ -84,6 +117,7 @@ struct BookView: View {
                 SettingsView(showing: $showingSettingsView)
                     // Make the book state accessible to SettingsView
                     .environment(book)
+                    .presentationDetents([.fraction(0.6)])
             }
             // Respond when app is backgrounded, foregrounded, or made inactive
             .onChange(of: scenePhase) {

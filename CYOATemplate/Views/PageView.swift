@@ -10,10 +10,15 @@ import SwiftUI
 struct PageView: View {
 
     // MARK: Stored properties
+    
+    @State private var currentFont: String = "System"
+    
+    @State private var currentSize: Int = 20
 
     // Access the book state through the environment
     @Environment(BookStore.self) var book
     
+
     // The view model for the page view
     //
     // Making the view model a constant means
@@ -43,7 +48,9 @@ struct PageView: View {
                             )
                         )
                     )
-                        .font(.title2)
+                        //.font(.title2)
+                    .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
+                    
                     
                     if let image = page.image {
                         
