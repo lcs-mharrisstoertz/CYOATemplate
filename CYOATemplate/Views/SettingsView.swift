@@ -13,6 +13,8 @@ struct SettingsView: View {
     
     @State private var currentFont: String = "System"
     
+    @State private var currentBackground: String = "none"
+    
     @State private var currentSize: Int = 20
     
     // Whether this view is showing in the sheet right now
@@ -182,6 +184,52 @@ struct SettingsView: View {
                         
                     }
                     
+                   Spacer()
+                    
+                    Text("Select Background")
+                        .bold()
+                        .underline()
+
+                    
+                    HStack{
+                        //wallpaper 1
+                        Button(action: {
+                            book.reader.currentBackground = "wallpaper1"
+                            currentFont = "wallpaper1"
+                                }) {
+                                    Image("wallpaper1")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                    //wallpaper 2
+                        Button(action: {
+                            book.reader.currentBackground = "wallpaper2"
+                            currentFont = "wallpaper2"
+                                }) {
+                                    Image("wallpaper2")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                        
+                        
+                    //wallpaper 3
+                        Button(action: {
+                            book.reader.currentBackground = "wallpaper3"
+                            currentFont = "wallpaper3"
+                                }) {
+                                    Image("wallpaper3")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                    }
+                    
+                    
                     Spacer()
                     
                     
@@ -189,7 +237,7 @@ struct SettingsView: View {
             }
             
             .padding()
-            .navigationTitle("Statistics")
+            .navigationTitle("Settings")
             // Toolbar to show buttons for various actions
             .toolbar {
                 

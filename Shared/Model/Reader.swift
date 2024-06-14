@@ -13,6 +13,7 @@ struct Reader: Identifiable, Codable {
     var id: Int?
     var name: String?
     var prefersDarkMode: Bool
+    var currentBackground: String?
     var currentFont: String?
     var currentColour: String?
     var currentSize: Int?
@@ -23,6 +24,7 @@ struct Reader: Identifiable, Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case currentBackground = "current_background"
         case currentFont = "current_font"
         case currentColour = "current_colour"
         case currentSize = "current_size"

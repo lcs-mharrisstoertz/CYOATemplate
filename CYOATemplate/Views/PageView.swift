@@ -13,6 +13,8 @@ struct PageView: View {
     
     @State private var currentFont: String = "System"
     
+    @State private var currentBackground: String = "none"
+    
     @State private var currentColour: String = "primary"
     
     @State private var currentSize: Int = 20
@@ -30,72 +32,88 @@ struct PageView: View {
     
     // MARK: Computed properties
     var body: some View {
+      
         
+        ZStack{
+            
+            //background
+            Image(book.reader.currentBackground ?? "none")
+                .resizable()
+                .scaledToFit()
+                .edgesIgnoringSafeArea(.all)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .opacity(0.7)
+            
         ScrollView {
-            VStack(spacing: 10) {
-                                          
-                // Has the page loaded yet?
-                if let page = viewModel.page {
-                    
-                    // DEBUG
-                    let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
-                    let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
+            
+          
+                
+                VStack(spacing: 10) {
+                                              
+                    // Has the page loaded yet?
+                    if let page = viewModel.page {
+                        
+                        // DEBUG
+                        let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
+                        let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
 
-                    Text(
-                        try! AttributedString(
-                            markdown: page.narrative,
-                            options: AttributedString.MarkdownParsingOptions(
-                                interpretedSyntax: .inlineOnlyPreservingWhitespace
+                        Text(
+                            try! AttributedString(
+                                markdown: page.narrative,
+                                options: AttributedString.MarkdownParsingOptions(
+                                    interpretedSyntax: .inlineOnlyPreservingWhitespace
+                                )
                             )
                         )
-                    )
-                        //.font(.title2)
-                    .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
-                    .foregroundColor(book.reader.color)
-                    
-                    
-                    if let image = page.image {
+                            //.font(.title2)
+                        .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
+                        .foregroundColor(book.reader.color)
                         
-                        Image(image)
-                            .resizable()
-                            .scaledToFit()
-                            .border(.black, width: 1)
-                            .padding(.vertical, 10)
+                        
+                        if let image = page.image {
+                            
+                            Image(image)
+                                .resizable()
+                                .scaledToFit()
+                                .border(.black, width: 1)
+                                .padding(.vertical, 10)
 
-                    }
+                        }
 
-                    Divider()
-                    
-                    if page.isAnEndingOfTheStory {
+                        Divider()
+                        
+                        if page.isAnEndingOfTheStory {
 
-                        // Page is an ending, so tell the user,
-                        // and allow book to be re-started
-                        Text("The End")
-                            .bold()
-                            .onTapGesture {
-                                book.showCoverPage()
-                            }
+                            // Page is an ending, so tell the user,
+                            // and allow book to be re-started
+                            Text("The End")
+                                .bold()
+                                .onTapGesture {
+                                    book.showCoverPage()
+                                }
+
+                        } else {
+                            
+                            // Page is not an ending, so show available edges
+                            EdgesView(
+                                viewModel: EdgesViewModel(book: book)
+                            )
+                            
+                        }
+                        
+                        
+                        Spacer()
 
                     } else {
                         
-                        // Page is not an ending, so show available edges
-                        EdgesView(
-                            viewModel: EdgesViewModel(book: book)
-                        )
-                        
+                        // Page still loading from database
+                        ProgressView()
                     }
                     
-                    
-                    Spacer()
-
-                } else {
-                    
-                    // Page still loading from database
-                    ProgressView()
                 }
-                
+                .padding()
             }
-            .padding()
+            
         }
 
     }
