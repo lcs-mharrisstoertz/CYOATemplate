@@ -16,7 +16,7 @@ struct PageView: View {
 
     @State private var currentSize: Int = 20
     @State var Texty: String = ""
-    @State var speechSynthesizer: AVSpeechSynthesizer?
+    let Voice = AVSpeechSynthesizer()
 
 
     // Access the book state through the environment
@@ -33,12 +33,12 @@ struct PageView: View {
     // MARK: Computed properties
     
     func textT(){
-        let utterance = AVSpeechUtterance(string: Texty)
-           utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-           utterance.rate = 0.1
-
-           speechSynthesizer = AVSpeechSynthesizer()
-           speechSynthesizer?.speak(utterance)
+        let TilteSpeakingText1 = AVSpeechUtterance(string: Texty)
+        TilteSpeakingText1.rate = 0.003
+        TilteSpeakingText1.pitchMultiplier = 0.60
+        TilteSpeakingText1.volume = 0.75
+        TilteSpeakingText1.postUtteranceDelay = 0.01
+        Voice.speak(TilteSpeakingText1)//call here instead
 
     }
     var body: some View {
