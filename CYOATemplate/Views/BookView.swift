@@ -23,6 +23,12 @@ struct BookView: View {
     // Whether the settings view is being shown right now
     @State private var showingSettingsView = false
     
+    //Auto Font
+    @State private var currentFont: String = "System"
+    
+    //Auto Size
+    @State private var currentSize: Int = 20
+    
     // Track when app is foregrounded, backgrounded, or made inactive
     @Environment(\.scenePhase) var scenePhase
 
@@ -36,7 +42,7 @@ struct BookView: View {
                     
                     HStack {
                         Text("\(book.currentPageId!)")
-                            .font(.largeTitle)
+                            .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
                         Spacer()
                     }
                     .padding()
@@ -111,6 +117,7 @@ struct BookView: View {
                 SettingsView(showing: $showingSettingsView)
                     // Make the book state accessible to SettingsView
                     .environment(book)
+                    .presentationDetents([.fraction(0.6)])
             }
             // Respond when app is backgrounded, foregrounded, or made inactive
             .onChange(of: scenePhase) {
