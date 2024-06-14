@@ -6,8 +6,18 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct PageView: View {
+    
+    func textToSpeech() {
+        let utterance = AVSpeechUtterance(string: "Hello world")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+        utterance.rate = 0.1
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
+    }
+   
 
     // MARK: Stored properties
     
