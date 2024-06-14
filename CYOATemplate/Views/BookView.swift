@@ -14,12 +14,12 @@ struct BookView: View {
     @State private var book = BookStore()
 
     // Tracks overall state as the reader reads the book
+    @State private var showConfirmation: Bool = false
     
     @State private var settingsDetent = PresentationDetent.medium
     // Whether the statistics view is being shown right now
     @State private var showingStatsView = false
     // makes the confirm view not show by default
-    @State private var showConfirmationView = false
     // Whether the settings view is being shown right now
     @State private var showingSettingsView = false
     
@@ -59,8 +59,7 @@ struct BookView: View {
                 ToolbarItem(placement: .automatic) {
                         Image(systemName: "arrow.left")
                         .onTapGesture {
-                         showConfirmationView = true
-                        }
+                            showConfirmation.toggle()                       }
                     }
 
                 
@@ -90,15 +89,17 @@ struct BookView: View {
 
             }
             
-            .sheet(isPresented: $showConfirmationView) {
-                ConfirmationView(showing: $showConfirmationView)
-                    .presentationDetents(
-                                       [.medium, .large]
-                               
-                                    )
-                    .presentationDragIndicator(.hidden)
-
-                 }
+            .confirmationDialog("ARE YOU SURE", isPresented: $showConfirmation, titleVisibility: .visible) {
+                Button(role: .destructive) {
+                    book.showCoverPage()
+                    
+                } label: {
+                    Text("Yes")
+                }
+            }message: {
+                    Text("if you press yes all progress within the book will be lost")
+                }
+          
             // Show the statistics view
             .sheet(isPresented: $showingStatsView) {
                 StatsView(showing: $showingStatsView)

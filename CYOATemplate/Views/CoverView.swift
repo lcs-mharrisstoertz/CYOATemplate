@@ -28,6 +28,7 @@ let gradient = Gradient(colors: [color0, color1]);
     
     // Access the book state through the environment
     @Environment(BookStore.self) var book
+
     
     // MARK: Computed properties
     @State private var scale = 1.0
