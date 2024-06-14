@@ -15,7 +15,9 @@ struct PageView: View {
     @State private var currentFont: String = "System"
     
     @State private var currentSize: Int = 20
-    
+    @State var Texty: String = ""
+    @State private var speechSynthesizer: AVSpeechSynthesizer?
+
 
     // Access the book state through the environment
     @Environment(BookStore.self) var book
@@ -29,6 +31,14 @@ struct PageView: View {
     // then PageView will be re-loaded, updating the text
     let viewModel: PageViewModel
     // MARK: Computed properties
+    
+    func textT(){
+        let utterance = AVSpeechUtterance(string: Texty)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
+
+    }
     var body: some View {
         
         ScrollView {
@@ -41,7 +51,8 @@ struct PageView: View {
                     let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
                     let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
                     
-                    let pageText = page.narrative
+                    let Texty = page.narrative
+                    
                     
                    
                     Text(
@@ -55,6 +66,17 @@ struct PageView: View {
                         //.font(.title2)
                     .font(.custom(book.reader.currentFont ?? "System", fixedSize: CGFloat(book.reader.currentSize ?? 20)))
                     
+                    Button(action: {
+                                // Call the TextT function when the button is pressed
+                                textT()
+                            }) {
+                                Text("Press Me")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                        
                     
                     if let image = page.image {
                         
@@ -65,6 +87,7 @@ struct PageView: View {
                             .padding(.vertical, 10)
 
                     }
+                    
 
                     Divider()
                     
