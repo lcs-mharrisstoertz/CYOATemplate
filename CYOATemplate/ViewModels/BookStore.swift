@@ -34,6 +34,8 @@ class BookStore: Observable {
         
     }
     
+   
+    
     // Is the book being read at the moment?
     var isBeingRead: Bool {
         
@@ -153,7 +155,8 @@ class BookStore: Observable {
     
     // Start reading from the first page
     func beginReading() {
-        self.currentPageId = self.firstPageId
+//        self.currentPageId = self.firstPageId
+        self.currentPageId = 1
     }
     
     // Advance to the provided page id

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct AppEntryView: View {
     
     // MARK: Stored properties
@@ -45,6 +46,9 @@ struct AppEntryView: View {
                 }
             }
         }
+
+               
+           
     }
 }
 
