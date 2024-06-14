@@ -14,6 +14,8 @@ struct PageView: View {
     // Access the book state through the environment
     @Environment(BookStore.self) var book
     
+    @StateObject private var bookStore = BookStore()
+
     // The view model for the page view
     //
     // Making the view model a constant means
