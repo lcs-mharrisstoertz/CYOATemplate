@@ -62,12 +62,14 @@ struct PageView: View {
                             
                         }) {
                             Text("text to speech")
-                                .padding()
+                                .padding(5)
                                 .background(Color.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+                            Spacer() // This will push the button to the left
+
                         }
-                        padd
+                        
                     }
                     
                     Text(
