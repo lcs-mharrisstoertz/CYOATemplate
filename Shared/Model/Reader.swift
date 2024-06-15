@@ -15,6 +15,7 @@ struct Reader: Identifiable, Codable {
     var prefersDarkMode: Bool
     var currentBackground: String?
     var currentFont: String?
+    var sliderValue: Double?
     var currentColour: String?
     var currentSize: Int?
     var lastPageReadId: Int?
@@ -26,6 +27,7 @@ struct Reader: Identifiable, Codable {
         case name
         case currentBackground = "current_background"
         case currentFont = "current_font"
+        case sliderValue = "slider_value"
         case currentColour = "current_colour"
         case currentSize = "current_size"
         case prefersDarkMode = "prefers_dark_mode"

@@ -10,6 +10,7 @@ import SwiftUI
 struct PageView: View {
 
     // MARK: Stored properties
+    @Binding var sliderValue: Double
     
     @State private var currentFont: String = "System"
     
@@ -42,7 +43,7 @@ struct PageView: View {
                 .scaledToFit()
                 .edgesIgnoringSafeArea(.all)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .opacity(0.7)
+                .opacity(sliderValue)
             
         ScrollView {
             
@@ -121,6 +122,6 @@ struct PageView: View {
 
 #Preview {
     PageView(
-        viewModel: PageViewModel(book: BookStore())
+        sliderValue: .constant(0.5), viewModel: PageViewModel(book: BookStore())
     )
 }

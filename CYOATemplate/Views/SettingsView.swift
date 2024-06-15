@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     // MARK: Stored properties
+    @Binding var sliderValue: Double
     
     @State private var currentFont: String = "System"
     
@@ -230,6 +231,14 @@ struct SettingsView: View {
                     }
                     
                     
+                    //slider
+                    Slider(value: $sliderValue, in: 0...1, step: 0.1)
+                                    .padding()
+                    Text(String(format: "Opacity: %.1f", sliderValue))
+                        .bold()
+                                  .padding()
+                    
+                    
                     Spacer()
                     
                     
@@ -261,5 +270,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(showing: Binding.constant(true))
+    SettingsView(sliderValue: .constant(0.5), showing: Binding.constant(true))
 }

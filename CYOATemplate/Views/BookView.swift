@@ -17,7 +17,7 @@ struct BookView: View {
     
     // Whether the statistics view is being shown right now
     @State private var showingStatsView = false
-
+    
     // Whether the settings view is being shown right now
     @State private var showingSettingsView = false
     
@@ -30,15 +30,19 @@ struct BookView: View {
     //Auto Size
     @State private var currentSize: Int = 20
     
+    //Image opacity
+    @State private var sliderValue: Double = 0.5
+    
+    
     // Track when app is foregrounded, backgrounded, or made inactive
     @Environment(\.scenePhase) var scenePhase
-
+    
     // MARK: Computed properties
     var body: some View {
         NavigationStack {
             
             VStack {
-
+                
                 if book.isBeingRead {
                     
                     HStack {
@@ -50,13 +54,13 @@ struct BookView: View {
                     .padding()
                     
                     PageView(
-                        viewModel: PageViewModel(book: book)
+                        sliderValue: $sliderValue, viewModel: PageViewModel(book: book)
                     )
                     
                 } else {
                     CoverView()
                 }
-
+                
             }
             // Add our object to track state into the environment
             // so it is accessible to the other views in the app
@@ -71,7 +75,7 @@ struct BookView: View {
                     } label: {
                         Image(systemName: "chart.pie.fill")
                     }
-
+                    
                 }
                 
                 // Show the settings view
@@ -81,9 +85,9 @@ struct BookView: View {
                     } label: {
                         Image(systemName: "gear")
                     }
-
+                    
                 }
-
+                
             }
             // Show the statistics view
             .sheet(isPresented: $showingStatsView) {
@@ -91,8 +95,7 @@ struct BookView: View {
             }
             // Show the settings view
             .sheet(isPresented: $showingSettingsView) {
-                SettingsView(showing: $showingSettingsView)
-                    // Make the book state accessible to SettingsView
+                SettingsView(sliderValue: $sliderValue, showing: $showingSettingsView)
                     .environment(book)
                     .presentationDetents([.fraction(0.7)])
             }
@@ -114,11 +117,11 @@ struct BookView: View {
                     print("Background")
                 }
             }
-
+            
         }
         // Dark / light mode toggle
         .preferredColorScheme(book.reader.prefersDarkMode ? .dark : .light)
-
+        
     }
 }
 
